@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+ *{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+header{
+  width:90%;
+  padding:15px 0;
+  margin:30px auto 0;
+  text-align: center;
+}
+
+.edit-icon{
+  color: #333;
+  background: none;
+  border: 1px solid rgba(0,0,0,.2);
+  box-shadow: none;
+}

@@ -5,12 +5,45 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand p-1" href="/">Bookers</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <a class="nav-link text-light" href="/users/<%= current_user.id %>"><i class="fas fa-home"></i>Home</a>
+              <a class="nav-link text-light" href="/users"><i class="fas fa-users"></i>Users</a>
+              <a class="nav-link text-light" href="/books"><i class="fas fa-book-open" ></i>Books</a>
+              <a class="nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out"><i class="fas fa-sign-out-alt"></i>Log out</a>
+            <% else %>
+              <a class="nav-link text-light" href="/"><i class="fas fa-home"></i>Home</a>
+              <a class="nav-link text-light" href="/homes/about"><i class="fas fa-link"></i>About</a>
+              <a class="nav-link text-light" href="/users/sign_up"><i class="fas fa-user-plus"></i>Sign up</a>
+              <a class="nav-link text-light" href="/users/sign_in"><i class="fas fa-sign-in-alt"></i>Log in</a>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="my-3">
     <%= yield %>
+    </main>
+    <footer>
+      <div class="container">
+        <p class="pt-4 text-center">CopyRight Infratop.inc</p>
+      </div>
+    </footer>
   </body>
 </html>
